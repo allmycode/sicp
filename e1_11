@@ -1,0 +1,13 @@
+;; recursive function f(n) = f(n-1) + f(n-2) + f(n-3)
+(define (f3 n)
+  (if (< n 3)
+      n
+      (+  (f3 (- n 1)) (f3 (- n 2)) (f3 (- n 3)))))
+
+;; iterative version
+(define (f3 n)
+  (define (f3-iter a b c n)
+    (if (= n 0)
+        c
+        (f3-iter (+ a b c) a b (- n 1))))
+  (f3-iter 2 1 0 n))

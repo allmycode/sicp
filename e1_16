@@ -1,0 +1,10 @@
+(define (fe a b n)
+  
+  (if (even? n)
+      (fe a (square b) (/ n 2))
+      (fe (* a b) b (- n 1))))
+
+(define (even? n)
+  (= (remainder n 2) 0))
+
+(define (square x) (* x x))

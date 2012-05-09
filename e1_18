@@ -1,0 +1,18 @@
+;; This buffer is for notes you don't want to save, and for Lisp evaluation.
+;; If you want to create a file, visit that file with C-x C-f,
+;; then enter the text in that file's own buffer.
+
+(define (mul a b)
+  (define (muli a b s)
+   (cond ((= b 0 ) s)
+         ((even? b) (muli a (halve b) (double s)))
+         (else (muli a (- b 1) (+ s a)))))
+  (cond ((even? b) (+ a (mul a (- b 1))))
+        (else (muli a b 0))))
+
+(define (even? n)
+  (= 0 (remainder n 2)))
+
+(define (double n) (+ n n))
+
+(define (halve n) (/ n 2))
